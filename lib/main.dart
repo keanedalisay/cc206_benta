@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:cc206_benta/features/home_view.dart';
+
 void main() {
   runApp(HomeView());
-}
-
-class HomeView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
 }
