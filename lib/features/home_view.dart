@@ -30,3 +30,16 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+class CustomTextStyle {
+  static const H1 = TextStyle(
+      fontSize: 30,
+      fontFamily: 'Arial',
+      fontWeight: FontWeight.w600
+  );
+
+  static const Small = TextStyle(
+      fontSize: 14,
+      fontFamily: 'Arial'
+  );
+}
