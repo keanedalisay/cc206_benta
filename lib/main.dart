@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(HomeView());
+  runApp(MaterialApp(
+        title: 'Benta',
+          theme: ThemeData.light(),
+          home: HomeView()
+      )
+  );
 }
 
-class HomeView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-}
