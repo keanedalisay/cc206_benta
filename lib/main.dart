@@ -3,11 +3,11 @@ import 'package:cc206_benta/features/signup_page.dart';
 
 
 void main() {
-  runApp(MaterialApp(
-        title: 'Benta',
-          theme: ThemeData.light(),
-  
-      )
+  runApp(
+    MaterialApp(
+      title: 'Benta',
+      theme: ThemeData.light(),
+      home: const SignUpPage(),  // Wrap HomeView in MaterialApp to provide Directionality
+    ),
   );
 }
-
