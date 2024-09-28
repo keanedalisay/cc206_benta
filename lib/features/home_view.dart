@@ -21,6 +21,19 @@ class HomeView extends StatelessWidget {
                     fit: BoxFit.cover)
             ),
             Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Column(
+                children: [
+                  Text("What services do we offer?"),
+                  Text("This is my point 1."),
+                  Text("This is my point 2."),
+                  Text("This is my point 3."),
+                  Text("This is my point 4.")
+                ],
+              )
+            ),
+            Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Text('Want to contact us? Call at 0999-999-9999!',
