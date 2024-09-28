@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
                     style: CustomTextStyle.H1)
             ),
             Container(
-                child: Image.network('https://blog.epson.com.ph/wp-content/uploads/2020/07/SMEs_2-1024x576.jpg',
+                child: Image.asset('assets/images/business_as.jpg',
                     fit: BoxFit.cover)
             ),
             Container(
