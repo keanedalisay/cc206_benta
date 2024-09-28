@@ -10,6 +10,7 @@ class HomeView extends StatelessWidget {
         Column(
           children: [
             Container(
+                alignment: Alignment.center,
                 padding: EdgeInsets.all(20),
                 color: Color.fromRGBO(25, 170, 255, .8),
                 child: Text('Benta your way to Business',
@@ -20,7 +21,8 @@ class HomeView extends StatelessWidget {
                     fit: BoxFit.cover)
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                alignment: Alignment.center,
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Text('Want to contact us? Call at 0999-999-9999!',
                 style: CustomTextStyle.Small
                 )
