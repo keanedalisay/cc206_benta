@@ -26,11 +26,11 @@ class HomeView extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                       child: Column(
                         children: [
-                          Text("What services do we offer?"),
-                          Text("This is my point 1."),
-                          Text("This is my point 2."),
-                          Text("This is my point 3."),
-                          Text("This is my point 4.")
+                          Text("What services do we offer?", style: CustomTextStyle.H2),
+                          Text("This is my point 1.", style: CustomTextStyle.Body),
+                          Text("This is my point 2.", style: CustomTextStyle.Body),
+                          Text("This is my point 3.", style: CustomTextStyle.Body),
+                          Text("This is my point 4.", style: CustomTextStyle.Body)
                         ],
                       )
                   ),
@@ -53,6 +53,17 @@ class CustomTextStyle {
       fontSize: 30,
       fontFamily: 'Arial',
       fontWeight: FontWeight.w600
+  );
+
+  static const H2 = TextStyle(
+      fontSize: 24,
+      fontFamily: 'Arial',
+      fontWeight: FontWeight.w600
+  );
+
+  static const Body = TextStyle(
+      fontSize: 18,
+      fontFamily: 'Arial'
   );
 
   static const Small = TextStyle(
