@@ -66,26 +66,41 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(height: 60),
 
             // Sign Up Button
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-                  backgroundColor: Colors.grey[200],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15), // Rounded corners
-                    side: BorderSide.none, // Remove border
-                  ),
-                ),
-                child: const Text(
-                    'Next',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
-                ),
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpStep2()), // Remove extra comma here
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+              backgroundColor: Colors.grey[200],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15), // Rounded corners
+                side: BorderSide.none, // Remove border
               ),
             ),
-          ],
+            child: const Text(
+              'Next',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
         ),
+        ],
+        ),
+      ),
+    );
+  }
+}
+
+class SignUpStep2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(45.0),
       ),
     );
   }
