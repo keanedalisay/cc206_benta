@@ -6,66 +6,82 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(45.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.network(
-                'https://static.thenounproject.com/png/736545-200.png',
-                height: 100,
-                width: 100,
-              ),
-            ),
-            const SizedBox(height: 20),
 
-            // Title for the page
+            const SizedBox(height: 70),
+
             const Text(
-              'Create an Account',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              'Sign-up',
+              style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+
+            const Text(
+              'Step 1',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey),
+            ),
+
+            const SizedBox(height: 40),
+
+            const Text(
+              'What is the name of your business?',
+              style: TextStyle(fontSize: 20),
+            ),
+
+            const SizedBox(height: 12),
 
             // TextFormField for Email
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.grey[200],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
               ),
             ),
-            const SizedBox(height: 20),
 
+            const SizedBox(height: 40),
+
+            const Text(
+              'What is your user name?',
+              style: TextStyle(fontSize: 20),
+            ),
+
+            const SizedBox(height: 12),
             // TextFormField for Password
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.grey[200],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
               ),
-              obscureText: true,
             ),
-            const SizedBox(height: 20),
 
-            // TextFormField for Confirm Password
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
-              ),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
 
             // Sign Up Button
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Add sign-up logic
                 },
-                child: const Text('Sign Up'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                  backgroundColor: Colors.grey[200],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15), // Rounded corners
+                    side: BorderSide.none, // Remove border
+                  ),
+                ),
+                child: const Text(
+                    'Next',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+                ),
               ),
             ),
           ],
