@@ -30,3 +30,24 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter/inter-v18-latin-regular.ttf
+        - asset: assets/fonts/Inter/inter-v18-latin-italic.ttf
+          style: italic
+        - asset: assets/fonts/Inter/inter-v18-latin-700.ttf
+          weight: 700
+        - asset: assets/fonts/Inter/inter-v18-latin-800.ttf
+          weight: 800
+        - asset: assets/fonts/Inter/inter-v18-latin-900.ttf
+          weight: 900
+        - asset: assets/fonts/Inter/inter-v18-latin-700italic.ttf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/Inter/inter-v18-latin-800italic.ttf
+          style: italic
+          weight: 800
+        - asset: assets/fonts/Inter/inter-v18-latin-900italic.ttf
+          style: italic
+          weight: 900
