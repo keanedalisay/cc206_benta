@@ -6,6 +6,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF579008),
       body: Padding(
         padding: const EdgeInsets.all(45.0),
         child: Column(
@@ -16,19 +17,23 @@ class SignUpPage extends StatelessWidget {
 
             const Text(
               'Sign-up',
-              style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 44,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+              ),
             ),
 
             const Text(
               'Step 1',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
             ),
 
             const SizedBox(height: 40),
 
             const Text(
               'What is the name of your business?',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
 
             const SizedBox(height: 12),
@@ -48,7 +53,7 @@ class SignUpPage extends StatelessWidget {
 
             const Text(
               'What is your user name?',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
 
             const SizedBox(height: 12),
@@ -66,27 +71,34 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(height: 60),
 
             // Sign Up Button
-        Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignUpStep2()), // Remove extra comma here
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-              backgroundColor: Colors.grey[200],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15), // Rounded corners
-                side: BorderSide.none, // Remove border
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpStep2()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(120, 60),
+                backgroundColor: Colors.grey[200],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                  side: BorderSide.none,
+                ),
+              ),
+              child: const Text(
+                'Next',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            child: const Text(
-              'Next',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
+          ],
         ),
         ],
         ),
@@ -99,6 +111,7 @@ class SignUpStep2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF579008),
       body: Padding(
         padding: EdgeInsets.all(45.0),
         child: Column(
@@ -109,19 +122,30 @@ class SignUpStep2 extends StatelessWidget {
 
             const Text(
               'Sign-up',
-              style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 44,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+              ),
             ),
 
             const Text(
               'Step 2',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey),
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
+              ),
             ),
 
             const SizedBox(height: 40),
 
             const Text(
               'What will be your password?',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+              ),
             ),
 
             const SizedBox(height: 12),
@@ -141,7 +165,10 @@ class SignUpStep2 extends StatelessWidget {
 
             const Text(
               'Confirm Your User Password',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+              ),
             ),
 
             const SizedBox(height: 12),
@@ -160,25 +187,26 @@ class SignUpStep2 extends StatelessWidget {
 
             // Sign Up Button
             Center(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUpStep2()), // Remove extra comma here
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                      minimumSize: const Size(120, 65),
                       backgroundColor: Colors.grey[200],
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(25),
                         side: BorderSide.none,
                       ),
                     ),
                     child: const Text(
-                      'Finish',
+                      'Back',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ),
@@ -189,19 +217,19 @@ class SignUpStep2 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUpStep2()), // Remove extra comma here
+                        MaterialPageRoute(builder: (context) => SignUpStep2()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                      minimumSize: const Size(120, 65),
                       backgroundColor: Colors.grey[200],
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(25),
                         side: BorderSide.none,
                       ),
                     ),
                     child: const Text(
-                      'Back',
+                      'Finish',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ),
