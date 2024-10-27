@@ -129,7 +129,18 @@ class SignUpStep2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            const SizedBox(height: 70),
+            Center(
+              child: Container(
+                width: 100,
+                height: 100,
+                child: Image.asset(
+                  'assets/images/benta_logo.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
 
             const Text(
               'Sign-up',
