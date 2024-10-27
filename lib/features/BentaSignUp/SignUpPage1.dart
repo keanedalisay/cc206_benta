@@ -93,7 +93,7 @@ class SignUpPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignUpStep2()),
+                    MaterialPageRoute(builder: (context) => SignUpPage2()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -114,7 +114,7 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+            ),
           ],
           ),
         ),

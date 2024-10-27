@@ -2,7 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:cc206_benta/features/BentaSignUp/SignUpPage1.dart';
 import 'package:cc206_benta/features/BentaSignUp/CreatingAccountPage.dart';
 
-class SignUpStep2 extends StatelessWidget {
+
+class SignUpPage2 extends StatefulWidget{
+  const SignUpPage2({ Key? key }) : super(key: key);
+
+  @override
+  _SignUpStep2 createState() => _SignUpStep2();
+}
+
+
+class _SignUpStep2 extends State<SignUpPage2> {
+
+  bool _isVisible = false;
+  bool _isVisible2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +72,18 @@ class SignUpStep2 extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // TextFormField for Email
+              // TextFormField for Password
               TextFormField(
+                obscureText: !_isVisible,
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: (){
+                      setState(() {
+                        _isVisible = !_isVisible;
+                      });
+                    },
+                    icon: _isVisible ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                  ),
                   filled: true,
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
@@ -81,9 +103,18 @@ class SignUpStep2 extends StatelessWidget {
               ),
 
               const SizedBox(height: 12),
-              // TextFormField for Password
+              // TextFormField for Password Confirmation
               TextFormField(
+                obscureText: !_isVisible2,
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: (){
+                      setState(() {
+                        _isVisible2 = !_isVisible2;
+                      });
+                    },
+                    icon: _isVisible2 ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                  ),
                   filled: true,
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
