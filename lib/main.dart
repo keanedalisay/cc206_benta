@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/signup_page.dart';
+import 'package:cc206_benta/features/BentaSignUp/SignUpPage1.dart';
 
 
 void main() {
