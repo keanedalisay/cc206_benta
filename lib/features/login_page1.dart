@@ -7,10 +7,6 @@ class LogInPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Log In Page'),
-        backgroundColor: Colors.green,
-      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
