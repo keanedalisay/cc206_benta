@@ -47,12 +47,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  'Karen Daliva',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Inter',
+                // Unique for every "Customer ex, Karen Daliva"
+                Container(
+                  width: 150,
+                  height: 20,
+                  margin: EdgeInsets.only(top: 89, left: 31),
+                  child: Opacity(
+                    opacity: 0, // Hidden
+                    child: Text(
+                      'Karen Daliva',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Inter',
+                        height: 29.05 / 24,
+                        textBaseline: TextBaseline.alphabetic,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
                   ),
                 ),
                 Text(
@@ -192,3 +204,4 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 }
+
