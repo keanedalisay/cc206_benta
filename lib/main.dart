@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/login_page.dart';
+import 'package:cc206_benta/features/login_page1.dart'; 
 
 void main() {
-  runApp(
-    MaterialApp(
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       title: 'Benta',
       theme: ThemeData.light(),
-      home: const LogInPage(),
-    ),
-  );
+      home: const LogInPage1(),
+    );
+  }
 }
