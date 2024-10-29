@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Inventory.dart';
 
 void main() {
-  runApp(MaterialApp(
-        title: 'Benta',
-          theme: ThemeData.light(),
-          home: HomeView()
-      )
-  );
+  runApp(const InventoryApp()); // Run the world gurls
 }
-
