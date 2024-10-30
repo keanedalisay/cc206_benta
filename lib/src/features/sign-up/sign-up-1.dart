@@ -22,8 +22,6 @@ class SignUp1 extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Button,
-
                 Center(
                   child: Container(
                     width: 100,
