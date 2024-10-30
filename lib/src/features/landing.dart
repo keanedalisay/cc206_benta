@@ -1,3 +1,4 @@
+import 'package:cc206_benta/src/features/log-in/login-1.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
@@ -50,7 +51,12 @@ class Landing extends StatelessWidget {
                               child: Text('Have an account?',
                                   style: CustomTextStyle.TextBoldWhite)),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => LogIn1()),
+                                );
+                              },
                               child: Text('Log-in',
                                   style: CustomTextStyle.TextBoldBlack),
                               style: TextButton.styleFrom(

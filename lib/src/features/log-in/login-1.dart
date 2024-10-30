@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/login_page2.dart'; 
 
-class LogInPage1 extends StatelessWidget {
-  const LogInPage1({super.key});
+import 'package:cc206_benta/src/features/log-in/login-2.dart';
+
+class LogIn1 extends StatelessWidget {
+  const LogIn1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +136,7 @@ class LogInPage1 extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const LogInPage2()),
+                          MaterialPageRoute(builder: (context) => const LogIn2()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
