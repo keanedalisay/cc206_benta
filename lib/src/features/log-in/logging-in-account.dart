@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
-class LogInUpPage3 extends StatelessWidget {
+import 'package:cc206_benta/src/features/dashboard/dashboard.dart';
+
+class LoggingInAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => Dashboard()
+          )
+      );
+    });
+
     return Scaffold(
       backgroundColor: const Color(0xFF579008),
       body: Center(

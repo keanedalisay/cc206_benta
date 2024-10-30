@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/LoggingAccountPage.dart'; 
 
-class LogInPage2 extends StatefulWidget {
-  const LogInPage2({super.key});
+import 'package:cc206_benta/src/features/log-in/logging-in-account.dart';
+
+class LogIn2 extends StatefulWidget {
+  const LogIn2({super.key});
 
   @override
-  State<LogInPage2> createState() => _LogInPage2State();
+ _LogInState createState() => _LogInState();
 }
 
-class _LogInPage2State extends State<LogInPage2> {
+class _LogInState extends State<LogIn2> {
   final _formKey = GlobalKey<FormState>();
   final _password1 = TextEditingController();
   final _password2 = TextEditingController();
@@ -198,7 +199,7 @@ class _LogInPage2State extends State<LogInPage2> {
                           if (_formKey.currentState!.validate()) {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => LogInUpPage3()),
+                              MaterialPageRoute(builder: (context) => LoggingInAccount()),
                             );
                           }
                         },
