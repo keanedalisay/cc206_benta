@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cc206_benta/features/home_view.dart';
+import 'package:cc206_benta/src/features/landing.dart';
 
 void main() {
   runApp(
@@ -15,7 +15,7 @@ void main() {
           ),
           debugShowCheckedModeBanner: true,
           debugShowMaterialGrid: false,
-          home: HomeView()
+          home: Landing()
       )
   );
 }
