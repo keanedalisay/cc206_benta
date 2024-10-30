@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
+
 class Landing extends StatelessWidget {
   const Landing({super.key});
 
@@ -25,7 +27,12 @@ class Landing extends StatelessWidget {
                               child: Text('New to Benta?',
                                   style: CustomTextStyle.TextBoldWhite)),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SignUp1()),
+                                );
+                              },
                               child: Text('Sign-up',
                                   style: CustomTextStyle.TextBoldBlack),
                               style: TextButton.styleFrom(

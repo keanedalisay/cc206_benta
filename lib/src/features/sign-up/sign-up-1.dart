@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/BentaSignUp/SignUpPage2.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+import 'package:cc206_benta/src/features/sign-up/sign-up-2.dart';
+
+class SignUp1 extends StatelessWidget {
+  const SignUp1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class SignUpPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Button,
 
                 Center(
                   child: Container(
@@ -113,7 +115,7 @@ class SignUpPage extends StatelessWidget {
                     if (_formKey.currentState!.validate()){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUpPage2()),
+                        MaterialPageRoute(builder: (context) => SignUp2()),
                       );
                     }
                   },

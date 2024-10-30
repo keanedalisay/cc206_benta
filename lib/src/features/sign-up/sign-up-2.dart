@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:cc206_benta/features/BentaSignUp/SignUpPage1.dart';
-import 'package:cc206_benta/features/BentaSignUp/CreatingAccountPage.dart';
+
+import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
+import 'package:cc206_benta/src/features/sign-up/creating-account.dart';
 
 
-class SignUpPage2 extends StatefulWidget{
-  const SignUpPage2({ Key? key }) : super(key: key);
+class SignUp2 extends StatefulWidget{
+  const SignUp2({ Key? key }) : super(key: key);
 
   @override
-  _SignUpStep2 createState() => _SignUpStep2();
+  _SignUpState createState() => _SignUpState();
 }
 
 
-class _SignUpStep2 extends State<SignUpPage2> {
+class _SignUpState extends State<SignUp2> {
 
   final _formKey = GlobalKey<FormState>();
 
@@ -161,7 +162,7 @@ class _SignUpStep2 extends State<SignUpPage2> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SignUpPage()),
+                            MaterialPageRoute(builder: (context) => SignUp1()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -185,7 +186,7 @@ class _SignUpStep2 extends State<SignUpPage2> {
                           if (_formKey.currentState!.validate()){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignUpPage3()),
+                              MaterialPageRoute(builder: (context) => (CreatingAccount())),
                             );
                           }
                         },
