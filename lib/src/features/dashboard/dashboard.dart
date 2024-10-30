@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-feature-button.dart';
+
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
@@ -28,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Center(
                   child: Image.asset(
-                    'assets/images/top_icon.png',
+                    'images/inverse_benta_logo_single_letter_80_x_80.png',
                     width: 80,
                     height: 80,
                   ),
@@ -98,38 +101,10 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: 100,
-              width: 100,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/POS.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Point-of-sale',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      height: 14.52 / 12,
-                      color: Color(0xFF579008),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
+          DashboardFeatureButton(
+              featureName: 'Point-of-sale',
+              iconName: 'cash-register.png',
+              route: MaterialPageRoute(builder: (context) => PointOfSale())
           ),
           Expanded(
             child: Container(),
@@ -146,7 +121,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    'assets/images/Dashboard.png',
+                    '/icons/house.png',
                     width: 28,
                     height: 28,
                   ),
@@ -157,7 +132,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    'assets/images/Inventory.png',
+                    '/icons/boxes.png',
                     width: 28,
                     height: 28,
                   ),
@@ -168,7 +143,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    'assets/images/Sales.png',
+                    '/icons/stack-of-coins.png',
                     width: 28,
                     height: 28,
                   ),
