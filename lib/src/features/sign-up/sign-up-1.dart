@@ -27,7 +27,7 @@ class SignUp1 extends StatelessWidget {
                     width: 100,
                     height: 100,
                     child: Image.asset(
-                      'assets/images/benta_logo.png',
+                      'assets/images/benta_logo_single_letter_80_x_80.png',
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -31,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Center(
                   child: Image.asset(
-                    'images/inverse_benta_logo_single_letter_80_x_80.png',
+                    'assets/images/inverse_benta_logo_single_letter_80_x_80.png',
                     width: 80,
                     height: 80,
                   ),
@@ -121,7 +121,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    '/icons/house.png',
+                    'assets/icons/house.png',
                     width: 28,
                     height: 28,
                   ),
@@ -132,7 +132,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    '/icons/boxes.png',
+                    'assets/icons/boxes.png',
                     width: 28,
                     height: 28,
                   ),
@@ -143,7 +143,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Image.asset(
-                    '/icons/stack-of-coins.png',
+                    'assets/icons/stack-of-coins.png',
                     width: 28,
                     height: 28,
                   ),

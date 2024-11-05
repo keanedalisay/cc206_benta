@@ -27,7 +27,7 @@ class CreatingAccount extends StatelessWidget{
                 width: 300,
                 height: 300,
                 child: Image.asset(
-                  'assets/images/benta_logo.png',
+                  'assets/images/benta_logo_single_letter_200_x_200.png',
                   fit: BoxFit.cover,
                 ),
               ),

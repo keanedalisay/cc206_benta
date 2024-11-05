@@ -18,7 +18,7 @@ class Landing extends StatelessWidget {
                 children: [
                   Container(
                       child: Image.asset(
-                          'images/benta_logo_full_tagline_1280_x_720.png')),
+                          'assets/images/benta_logo_full_tagline_1280_x_720.png')),
                   Container(
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                       child: Column(

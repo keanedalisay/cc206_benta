@@ -33,7 +33,7 @@ class DashboardFeatureButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'icons/${this.iconName}',
+                  'assets/icons/${this.iconName}',
                   width: 40,
                   height: 40,
                 ),
