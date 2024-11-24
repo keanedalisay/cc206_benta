@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:email_validator/email_validator.dart';
 import 'package:cc206_benta/src/features/sign-up/sign-up-2.dart';
 
 class SignUp1 extends StatelessWidget {
@@ -78,7 +78,7 @@ class SignUp1 extends StatelessWidget {
                 const SizedBox(height: 40),
 
                 const Text(
-                  'What is your user name?',
+                  'What is your email?',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
 
@@ -94,9 +94,9 @@ class SignUp1 extends StatelessWidget {
                   ),
                   validator: (value){
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your user name';
-                    } else if (value.length < 5) {
-                      return 'Username must be at least 5 characters long';
+                      return 'Please enter your email';
+                    } else if (!EmailValidator.validate(value)) {
+                      return 'Please enter a valid email address';
                     }
                     return null;
                   }
