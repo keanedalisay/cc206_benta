@@ -1,14 +1,31 @@
+import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:cc206_benta/src/features/sign-up/sign-up-2.dart';
 
-class SignUp1 extends StatelessWidget {
+class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});
+
+  @override
+  _SignUp1State createState() => _SignUp1State();
+}
+
+class _SignUp1State extends State<SignUp1> {
 
   @override
   Widget build(BuildContext context) {
 
     final _formKey = GlobalKey<FormState>();
+    final _businessName = TextEditingController();
+    final _email = TextEditingController();
+
+    @override
+    void dispose(){
+      super.dispose();
+      _businessName.dispose();
+      _email.dispose();
+    }
 
     return Scaffold(
       backgroundColor: Color(0xFF579008),
@@ -60,6 +77,7 @@ class SignUp1 extends StatelessWidget {
 
                 // TextFormField for Business Name
                 TextFormField(
+                  controller: _businessName,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[200],
@@ -85,6 +103,7 @@ class SignUp1 extends StatelessWidget {
                 const SizedBox(height: 12),
                 // TextFormField for Password
                 TextFormField(
+                  controller: _email,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[200],
@@ -111,9 +130,10 @@ class SignUp1 extends StatelessWidget {
                   ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()){
-                      Navigator.push(
+                      Navigator.pushNamed(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUp2()),
+                        '/sign-up/password',
+                        arguments: {'email': _email.text.trim()},
                       );
                     }
                   },
