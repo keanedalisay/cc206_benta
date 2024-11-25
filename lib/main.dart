@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:cc206_benta/src/features/landing.dart';
 import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
@@ -12,7 +13,11 @@ import 'package:cc206_benta/src/features/dashboard/point-of-sale/cash-on-hand-po
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/add-items-point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/receipt-point-of-sale.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
   runApp(
       MaterialApp(
           title: 'Benta',
