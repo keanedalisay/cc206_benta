@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
-
+import 'package:email_validator/email_validator.dart';
 import 'package:cc206_benta/src/features/log-in/login-2.dart';
 
-class LogIn1 extends StatelessWidget {
+class LogIn1 extends StatefulWidget{
   const LogIn1({super.key});
+
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<LogIn1> {
+
+  final _email = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,71 +68,83 @@ class LogIn1 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "What is your business's\naccount ID?",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        height: 19.36 / 16,
-                        color: Colors.white,
+              Form(
+                  key: _formKey,
+                  child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "What is your business's\naccount ID?",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          height: 19.36 / 16,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      width: 350,
-                      height: 88,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: 350,
+                        height: 88,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 20,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      "What is your user name?",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        height: 19.36 / 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      width: 350,
-                      height: 88,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        "What is your email?",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          height: 19.36 / 16,
+                          color: Colors.white,
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: 350,
+                        height: 88,
+                        child: TextFormField(
+                          controller: _email,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 20,
+                            ),
+                          ),
+                          validator: (value){
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            } else if (!EmailValidator.validate(value)) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
@@ -134,10 +155,13 @@ class LogIn1 extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const LogIn2()),
-                        );
+                        if (_formKey.currentState!.validate()){
+                          Navigator.pushNamed(
+                            context,
+                            '/log-in/password',
+                            arguments: {'email': _email.text.trim()},
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(120, 55),

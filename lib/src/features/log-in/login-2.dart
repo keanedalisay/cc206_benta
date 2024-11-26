@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
+import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 import 'package:cc206_benta/src/features/log-in/logging-in-account.dart';
 
 class LogIn2 extends StatefulWidget {
@@ -10,19 +13,36 @@ class LogIn2 extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn2> {
+
+  final _auth = AuthService();
+
   final _formKey = GlobalKey<FormState>();
   final _password1 = TextEditingController();
-  final _password2 = TextEditingController();
+
 
   @override
   void dispose() {
-    _password1.dispose();
-    _password2.dispose();
     super.dispose();
+    _password1.dispose();
+
+  }
+
+  _login(String email) async{
+    final user = await _auth.loginUserWithEmailAndPassword(email, _password1.text);
+
+    if(user != null){
+      log("User logged in successfully!");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final Map<String, String>? args =
+    ModalRoute.of(context)?.settings.arguments as Map<String, String>?;
+
+    final String email = args?['email'] ?? '';
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -160,6 +180,7 @@ class _LogInState extends State<LogIn2> {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+                            _login(email);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => LoggingInAccount()),
