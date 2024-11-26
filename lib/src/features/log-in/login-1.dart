@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cc206_benta/src/features/log-in/login-2.dart';
+import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 
 class LogIn1 extends StatefulWidget{
   const LogIn1({super.key});
@@ -13,6 +15,41 @@ class _LoginState extends State<LogIn1> {
 
   final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
+  Future<bool> _checkUserExists(String email) async {
+    try {
+      final signInMethods = await _auth.fetchSignInMethodsForEmail(email);
+      return signInMethods.isNotEmpty;
+    } catch (e) {
+      debugPrint('Error checking user existence: $e');
+      return false;
+    }
+  }
+
+  void _onNextPressed() async {
+    if (_formKey.currentState!.validate()) {
+      final email = _email.text.trim();
+
+      final userExists = await _checkUserExists(email);
+
+      if (userExists) {
+        Navigator.pushNamed(
+          context,
+          '/log-in/password',
+          arguments: {'email': email},
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Account not found. Please try again."),
+          ),
+        );
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -154,15 +191,7 @@ class _LoginState extends State<LogIn1> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()){
-                          Navigator.pushNamed(
-                            context,
-                            '/log-in/password',
-                            arguments: {'email': _email.text.trim()},
-                          );
-                        }
-                      },
+                      onPressed:  _onNextPressed,
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(120, 55),
                         backgroundColor: Colors.white, 
