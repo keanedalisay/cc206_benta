@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
 import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 import 'package:cc206_benta/src/features/log-in/logging-in-account.dart';
 
@@ -24,14 +23,19 @@ class _LogInState extends State<LogIn2> {
   void dispose() {
     super.dispose();
     _password1.dispose();
-
   }
 
-  _login(String email) async{
-    final user = await _auth.loginUserWithEmailAndPassword(email, _password1.text);
-
-    if(user != null){
-      log("User logged in successfully!");
+  Future<bool> _login(String email) async{
+    try{
+      final user = await _auth.loginUserWithEmailAndPassword(email, _password1.text);
+      if(user != null){
+        log("User logged in successfully!");
+        return true;
+      }
+      return false;
+    }catch(e){
+      log("Login error: $e");
+      return false;
     }
   }
 
@@ -178,13 +182,22 @@ class _LogInState extends State<LogIn2> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            _login(email);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoggingInAccount()),
-                            );
+                            final isLoginSuccessful = await _login(email);
+
+                            if (isLoginSuccessful) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => LoggingInAccount()),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Incorrect password. Please try again."),
+                                ),
+                              );
+                            }
                           }
                         },
                         style: ElevatedButton.styleFrom(

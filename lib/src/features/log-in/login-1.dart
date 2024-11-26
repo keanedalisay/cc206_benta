@@ -20,18 +20,18 @@ class _LoginState extends State<LogIn1> {
 
   Future<bool> _checkUserExists(String email) async {
     try {
-      final signInMethods = await _auth.fetchSignInMethodsForEmail(email);
+      final signInMethods = await _auth.fetchSignInMethodsForEmail(email.toLowerCase());
+      debugPrint('Sign-in methods for $email: $signInMethods');
       return signInMethods.isNotEmpty;
     } catch (e) {
-      debugPrint('Error checking user existence: $e');
+      debugPrint('Error checking user existence: ${e.toString()}');
       return false;
     }
   }
 
   void _onNextPressed() async {
     if (_formKey.currentState!.validate()) {
-      final email = _email.text.trim();
-
+      final email = _email.text.trim().toLowerCase();
       final userExists = await _checkUserExists(email);
 
       if (userExists) {
@@ -40,7 +40,8 @@ class _LoginState extends State<LogIn1> {
           '/log-in/password',
           arguments: {'email': email},
         );
-      } else {
+      }
+      else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Account not found. Please try again."),
