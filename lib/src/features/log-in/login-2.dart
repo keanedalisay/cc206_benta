@@ -120,45 +120,8 @@ class _LogInState extends State<LogIn2> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
-                        "Confirm your user password",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          height: 19.36 / 16,
-                          color: Colors.white,
-                        ),
-                      ),
+
                       const SizedBox(height: 10),
-                      SizedBox(
-                        width: 350,
-                        height: 88,
-                        child: TextFormField(
-                          controller: _password2,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none,
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 20,
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please confirm your password';
-                            } else if (value != _password1.text) {
-                              return 'Passwords do not match';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
                     ],
                   ),
                 ),
