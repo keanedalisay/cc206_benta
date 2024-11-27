@@ -21,11 +21,11 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: SingleChildScrollView(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -39,18 +39,17 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(height: 20),
                 // Unique for every "Customer ex, Karen Daliva"
                 Container(
-                  width: 150,
-                  height: 20,
-                  margin: EdgeInsets.only(top: 89, left: 31),
+                  width: double.infinity,
+                  height: 40,
+                  margin: EdgeInsets.only(top: 0, left: 0),
                   child: Opacity(
-                    opacity: 0, // Hidden
+                    opacity: 1, // Hidden
                     child: Text(
                       'Karen Daliva',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Inter',
-                        height: 29.05 / 24,
                         textBaseline: TextBaseline.alphabetic,
                       ),
                       textAlign: TextAlign.left,
@@ -58,11 +57,19 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 Text(
-                  'I <3 Milktea',
+                  'I Love Milktea',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xFFBDBDBD),
+                    fontSize: 20,
+                    color: Color(0xFF787878),
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter',
+                  ),
+                ),
+                Text(
+                  'ILM-0A1F-9231',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFFBDBDBD),
                     fontFamily: 'Inter',
                   ),
                 ),
@@ -101,16 +108,18 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          DashboardFeatureButton(
-              featureName: 'Point-of-sale',
-              iconName: 'cash-register.png',
-              route: MaterialPageRoute(builder: (context) => PointOfSale())
-          ),
-          Expanded(
-            child: Container(),
-          ),
+          Container(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 40),
+              child: Column(children: [
+                  DashboardFeatureButton(
+                      featureName: 'Point-of-sale',
+                      iconName: 'cash-register.png',
+                      route: MaterialPageRoute(builder: (context) => PointOfSale())
+                  )],
+              )
+          )
         ],
-      ),
+      )),
       bottomNavigationBar: Container(
         height: 100,
         child: ClipRRect(
