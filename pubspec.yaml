@@ -28,12 +28,10 @@ flutter:
   generate: true
 
   assets:
-    # Add assets from the images directory to the application.
+    # Add assets from the images and icons directories to the application.
     - assets/images/
-<<<<<<< HEAD
     - assets/icons/
-=======
->>>>>>> ed2275a (Initial commit)
+
   fonts:
     - family: Inter
       fonts:
