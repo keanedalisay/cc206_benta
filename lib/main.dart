@@ -1,10 +1,13 @@
+import 'package:cc206_benta/src/features/Inventory/manage_items_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cc206_benta/src/features/inventory/inventory.dart';
+import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
+import 'package:cc206_benta/src/features/inventory/inventory_page.dart';
+
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
+    ChangeNotifierProvider<InventoryModel>(
       create: (context) => InventoryModel(),
       child: const MyApp(),
     ),
@@ -12,20 +15,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Inventory App',
-      initialRoute: '/',  // Set initial route for Inventory
+      title: 'Benta Inventory App',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      initialRoute: '/',
       routes: {
-          '/': (context) => const InventoryScreen(),
-          '/manage-items': (context) => const ManageItemsPage(),
-
+        '/': (context) => const InventoryPage(),
+        '/manage-items': (context) => const ManageItemsPage(),
       },
-      
     );
   }
 }
