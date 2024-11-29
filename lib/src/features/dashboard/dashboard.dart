@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.dart';
 import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-feature-button.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-bottom-nav-bar.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -9,14 +10,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,59 +114,7 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       )),
-      bottomNavigationBar: Container(
-        height: 75,
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-          child: BottomNavigationBar(
-            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
-            selectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8, bottom: 4),
-                  child: Image.asset(
-                    'assets/icons/house.png',
-                    width: 25,
-                    height: 25,
-                  ),
-                ),
-                label: 'Dashboard',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8, bottom: 2),
-                  child: Image.asset(
-                    'assets/icons/boxes.png',
-                    width: 25,
-                    height: 25,
-                  ),
-                ),
-                label: 'Inventory',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8, bottom: 2),
-                  child: Image.asset(
-                    'assets/icons/stack-of-coins.png',
-                    width: 25,
-                    height: 25,
-                  ),
-                ),
-                label: 'Sales',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            backgroundColor: Color(0xFF579008),
-            onTap: _onItemTapped,
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
-            type: BottomNavigationBarType.fixed,
-          ),
-        ),
-      ),
+      bottomNavigationBar: DashboardBottomNavBar()
     );
   }
 }
