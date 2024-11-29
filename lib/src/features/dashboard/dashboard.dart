@@ -33,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
                 // Unique for every "Customer ex, Karen Daliva"
                 Container(
                   width: double.infinity,
-                  height: 30,
+                  height: 40,
                   margin: EdgeInsets.only(top: 0, left: 0),
                   child: Opacity(
                     opacity: 1, // Hidden
@@ -89,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
                         Text(
                           'Settings',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                             color: Colors.grey[600],
                             fontFamily: 'Inter',
@@ -103,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           Container(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+              padding: const EdgeInsets.only(top: 20, right: 20, bottom: 40, left: 20),
               child: Column(children: [
                   DashboardFeatureButton(
                       featureName: 'Point-of-sale',
