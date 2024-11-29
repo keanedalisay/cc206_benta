@@ -1,185 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-bottom-nav-bar.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-top-nav-label.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/pos-transaction-item-button.dart';
 
 class PointOfSale extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      home: Scaffold(
-        backgroundColor: Color(0xFFFFFFFF), 
-        body: Stack(
-          children: [
-            // Header image
-            Positioned(
-              top: 26,
-              right: 15,
-              child: Image.asset(
-                'assets/images/POS_header.png',
-                width: 152,
-                height: 30,
-                fit: BoxFit.cover,
-              ),
-            ),
-            // Net total text
-            Positioned(
-              top: 66,
-              left: 15,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Net Total',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Inter',
-                      color: Color(0xFF579008),
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '₱120,00',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
-                      color: Color(0xFF579008),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Buttons
-            Positioned(
-              top: 185,
-              left: (MediaQuery.of(context).size.width / 2) - (122 + 8),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 122,
-                  height: 40,
-                  child: Image.asset(
-                    'assets/images/Add-items.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 185,
-              left: (MediaQuery.of(context).size.width / 2) + 8,
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 122,
-                  height: 40,
-                  child: Image.asset(
-                    'assets/images/Scan-items.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            // Transaction details
-            Positioned(
-              top: 272,
-              left: (MediaQuery.of(context).size.width / 2) - 125.5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Transaction Date: 01/01/2024',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      color: Color(0xFF787878),
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'Transaction ID: ABCD-1234',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      color: Color(0xFF787878),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Images
-            Positioned(
-              top: 337,
-              left: (MediaQuery.of(context).size.width / 2) - 133,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
               child: Container(
-                width: 266,
-                height: 69,
-                child: Image.asset(
-                  'assets/images/mango_yogurt.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 420,
-              left: (MediaQuery.of(context).size.width / 2) - 133,
-              child: Container(
-                width: 266,
-                height: 69,
-                child: Image.asset(
-                  'assets/images/milk_cake.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            // Bottom navigation bar
-            Positioned(
-              bottom: 0,
-              left: (MediaQuery.of(context).size.width / 2) - 160,
-              child: Container(
-                width: 320,
-                height: 75,
-                decoration: BoxDecoration(
-                  color: Color(0xFF579008),
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'Cancel',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'Checkout',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Inter',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+                margin: EdgeInsets.only(bottom: 90),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                          GeneralTopNavLabel(label: 'Point-of-sale', iconName: 'cash-register.png'),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Net Total',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF579008),
+                                ),
+                              ),
+                              Text(
+                                '₱120.00',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Inter',
+                                  color: Color(0xFF579008),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Flex(direction: Axis.horizontal,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                GeneralTextButton(
+                                    label: 'Add items',
+                                    color: Color(0xFF579008),
+                                    backgroundColor: Color(0xFFF1F1F1),
+                                    onPressed: () {}
+                                ),
+                                GeneralTextButton(
+                                    label: 'Scan items',
+                                    color: Color(0xFF579008),
+                                    backgroundColor: Color(0xFFF1F1F1),
+                                    onPressed: () {}
+                                ),
+                              ]),
+                              SizedBox(height: 20),
+                              Text(
+                                'Transaction Date: 01/01/2024',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF787878),
+                                ),
+                              ),
+                              Text(
+                                'Transaction ID: ABCD-1234',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF787878),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Container(
+                                width: double.infinity,
+                                height: 0,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                      color: Color(0xFFF1F1F1),
+                                      width: 1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              // TODO: Height does not expand to viewport height if there are no items
+                              PosTransactionItemButton(itemName: 'Mango Yogurt Smoothie', itemImg: 'image1.png', price: 70.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
+                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){})
+                            ],
+                            ),
+                          ),
+                      ]
+                  )
+              )
+          ),
+          GeneralBottomNavBar(navItems: 2, navLabels: [
+            "Cancel",
+            "Checkout"
+          ], navActions: [
+            () => Navigator.pushNamed(context, '/dashboard'),
+            () {}
+          ])
+        ],
       ),
     );
   }
