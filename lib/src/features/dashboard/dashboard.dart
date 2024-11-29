@@ -25,7 +25,7 @@ class _DashboardState extends State<Dashboard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,14 +40,14 @@ class _DashboardState extends State<Dashboard> {
                 // Unique for every "Customer ex, Karen Daliva"
                 Container(
                   width: double.infinity,
-                  height: 40,
+                  height: 30,
                   margin: EdgeInsets.only(top: 0, left: 0),
                   child: Opacity(
                     opacity: 1, // Hidden
                     child: Text(
                       'Karen Daliva',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 24,
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Inter',
                         textBaseline: TextBaseline.alphabetic,
@@ -59,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
                 Text(
                   'I Love Milktea',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     color: Color(0xFF787878),
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Inter',
@@ -68,7 +68,7 @@ class _DashboardState extends State<Dashboard> {
                 Text(
                   'ILM-0A1F-9231',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 12,
                     color: Color(0xFFBDBDBD),
                     fontFamily: 'Inter',
                   ),
@@ -97,6 +97,7 @@ class _DashboardState extends State<Dashboard> {
                           'Settings',
                           style: TextStyle(
                             fontSize: 16,
+                            fontWeight: FontWeight.w700,
                             color: Colors.grey[600],
                             fontFamily: 'Inter',
                           ),
@@ -109,7 +110,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           Container(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 40),
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
               child: Column(children: [
                   DashboardFeatureButton(
                       featureName: 'Point-of-sale',
@@ -121,40 +122,42 @@ class _DashboardState extends State<Dashboard> {
         ],
       )),
       bottomNavigationBar: Container(
-        height: 100,
+        height: 75,
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
           child: BottomNavigationBar(
+            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
+            selectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.only(top: 8, bottom: 4),
                   child: Image.asset(
                     'assets/icons/house.png',
-                    width: 28,
-                    height: 28,
+                    width: 25,
+                    height: 25,
                   ),
                 ),
                 label: 'Dashboard',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.only(top: 8, bottom: 2),
                   child: Image.asset(
                     'assets/icons/boxes.png',
-                    width: 28,
-                    height: 28,
+                    width: 25,
+                    height: 25,
                   ),
                 ),
                 label: 'Inventory',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.only(top: 8, bottom: 2),
                   child: Image.asset(
                     'assets/icons/stack-of-coins.png',
-                    width: 28,
-                    height: 28,
+                    width: 25,
+                    height: 25,
                   ),
                 ),
                 label: 'Sales',
@@ -165,8 +168,7 @@ class _DashboardState extends State<Dashboard> {
             unselectedItemColor: Colors.white70,
             backgroundColor: Color(0xFF579008),
             onTap: _onItemTapped,
-            iconSize: 28,
-            selectedFontSize: 14,
+            selectedFontSize: 12,
             unselectedFontSize: 12,
             type: BottomNavigationBarType.fixed,
           ),
