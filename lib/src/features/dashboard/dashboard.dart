@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.dart';
 import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-feature-button.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-bottom-nav-bar.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -9,23 +10,15 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: SingleChildScrollView(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -39,18 +32,17 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(height: 20),
                 // Unique for every "Customer ex, Karen Daliva"
                 Container(
-                  width: 150,
-                  height: 20,
-                  margin: EdgeInsets.only(top: 89, left: 31),
+                  width: double.infinity,
+                  height: 40,
+                  margin: EdgeInsets.only(top: 0, left: 0),
                   child: Opacity(
-                    opacity: 0, // Hidden
+                    opacity: 1, // Hidden
                     child: Text(
                       'Karen Daliva',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Inter',
-                        height: 29.05 / 24,
                         textBaseline: TextBaseline.alphabetic,
                       ),
                       textAlign: TextAlign.left,
@@ -58,11 +50,19 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 Text(
-                  'I <3 Milktea',
+                  'I Love Milktea',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xFFBDBDBD),
+                    fontSize: 16,
+                    color: Color(0xFF787878),
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter',
+                  ),
+                ),
+                Text(
+                  'ILM-0A1F-9231',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFFBDBDBD),
                     fontFamily: 'Inter',
                   ),
                 ),
@@ -89,7 +89,8 @@ class _DashboardState extends State<Dashboard> {
                         Text(
                           'Settings',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
                             color: Colors.grey[600],
                             fontFamily: 'Inter',
                           ),
@@ -101,68 +102,19 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          DashboardFeatureButton(
-              featureName: 'Point-of-sale',
-              iconName: 'cash-register.png',
-              route: MaterialPageRoute(builder: (context) => PointOfSale())
-          ),
-          Expanded(
-            child: Container(),
-          ),
+          Container(
+              padding: const EdgeInsets.only(top: 20, right: 20, bottom: 40, left: 20),
+              child: Column(children: [
+                  DashboardFeatureButton(
+                      featureName: 'Point-of-sale',
+                      iconName: 'cash-register.png',
+                      route: MaterialPageRoute(builder: (context) => PointOfSale())
+                  )],
+              )
+          )
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 100,
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-          child: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Image.asset(
-                    'assets/icons/house.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Dashboard',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Image.asset(
-                    'assets/icons/boxes.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Inventory',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Image.asset(
-                    'assets/icons/stack-of-coins.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Sales',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            backgroundColor: Color(0xFF579008),
-            onTap: _onItemTapped,
-            iconSize: 28,
-            selectedFontSize: 14,
-            unselectedFontSize: 12,
-            type: BottomNavigationBarType.fixed,
-          ),
-        ),
-      ),
+      )),
+      bottomNavigationBar: DashboardBottomNavBar()
     );
   }
 }
