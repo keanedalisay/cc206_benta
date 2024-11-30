@@ -88,7 +88,7 @@ class Checkout1 extends StatelessWidget {
                                           label: 'Cash on hand',
                                           color: Color(0xFF579008),
                                           backgroundColor: Color(0xFFF1F1F1),
-                                          onPressed: () {}
+                                          onPressed: () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/2')
                                       ),
                                       SizedBox(height: 5),
                                       GeneralTextButton(

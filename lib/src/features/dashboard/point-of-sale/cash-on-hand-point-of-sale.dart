@@ -193,7 +193,7 @@ class _Checkout2State extends State<Checkout2> {
               navLabels: ['Back', 'Finish'],
               navActions: [
                 () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/1'),
-                    (){}
+                    () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/receipt'),
               ]
           )
         ]

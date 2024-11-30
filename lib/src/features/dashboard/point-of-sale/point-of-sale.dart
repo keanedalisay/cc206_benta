@@ -49,7 +49,7 @@ class PointOfSale extends StatelessWidget {
                                     label: 'Add items',
                                     color: Color(0xFF579008),
                                     backgroundColor: Color(0xFFF1F1F1),
-                                    onPressed: () {}
+                                    onPressed: () => Navigator.pushNamed(context, '/dashboard/point-of-sale/add-items')
                                 ),
                                 GeneralTextButton(
                                     label: 'Scan items',
@@ -111,7 +111,7 @@ class PointOfSale extends StatelessWidget {
             "Checkout"
           ], navActions: [
             () => Navigator.pushNamed(context, '/dashboard'),
-            () {}
+            () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/1')
           ])
         ],
       ),
