@@ -48,7 +48,7 @@ class _Checkout2State extends State<Checkout2> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        GeneralTopNavLabel(label: 'Checkout', iconName: 'cash-register.png'),
+                        GeneralTopNavLabel(label: 'Checkout', iconName: 'grey-cash-register.png'),
                         Text(
                           'Net Total',
                           style: TextStyle(

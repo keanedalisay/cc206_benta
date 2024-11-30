@@ -17,7 +17,7 @@ class PointOfSale extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                          GeneralTopNavLabel(label: 'Point-of-sale', iconName: 'cash-register.png'),
+                          GeneralTopNavLabel(label: 'Point-of-sale', iconName: 'grey-cash-register.png'),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Column(
