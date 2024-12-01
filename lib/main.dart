@@ -59,6 +59,7 @@ void main() async{
             '/dashboard/point-of-sale/checkout/receipt': (context) => Receipt(),
             '/dashboard/inventory': (context) => InventoryPage(),
             '/dashboard/inventory/manage-items': (context) => ManageItemsPage(),
+            '/dashboard/sales': (context) => Sales()
           }
       )
   );
