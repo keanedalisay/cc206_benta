@@ -15,6 +15,15 @@ class _DashboardBottomNavBarState extends State<DashboardBottomNavBar> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.pushNamed(context, '/dashboard');
+        case 1:
+          Navigator.pushNamed(context, '/dashboard/inventory');
+        case 2:
+          Navigator.pushNamed(context, '/dashboard/sales');
+      }
     });
   }
 
