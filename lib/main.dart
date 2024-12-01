@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'package:cc206_benta/src/features/landing.dart';
@@ -17,7 +18,17 @@ import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_page.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options:
+  FirebaseOptions(
+      apiKey: 'AIzaSyBsKt5oNVdpoahJxoDO3BTyVIUMFTLzGvc',
+      appId: '1:832625997623:android:2c6959e2cbf7e8c158ccb2',
+      messagingSenderId: '832625997623',
+      projectId: 'benta-681ba')
+  );
+
   runApp(
       MaterialApp(
           title: 'Benta',
@@ -30,7 +41,6 @@ void main() {
           ),
           debugShowCheckedModeBanner: true,
           debugShowMaterialGrid: false,
-          home: Landing(),
           initialRoute: '/',
           routes: {
             '/sign-up/about': (context) => SignUp1(),

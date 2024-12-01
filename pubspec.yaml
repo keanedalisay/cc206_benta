@@ -18,6 +18,9 @@ dependencies:
   logger: ^1.1.0
   flutter_localizations:
     sdk: flutter
+  email_validator: ^3.0.0
+  firebase_core:
+  firebase_auth: ^4.17.7
   syncfusion_flutter_charts: ^27.2.4
   auto_size_text: ^3.0.0
 
