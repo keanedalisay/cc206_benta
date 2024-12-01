@@ -1,36 +1,51 @@
-import 'package:cc206_benta/src/features/Inventory/manage_items_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:cc206_benta/src/features/landing.dart';
+import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
+import 'package:cc206_benta/src/features/sign-up/sign-up-2.dart';
+import 'package:cc206_benta/src/features/log-in/login-1.dart';
+import 'package:cc206_benta/src/features/log-in/login-2.dart';
+import 'package:cc206_benta/src/features/dashboard/dashboard.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/checkout-point-of-sale.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/cash-on-hand-point-of-sale.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/add-items-point-of-sale.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/receipt-point-of-sale.dart';
+import 'package:cc206_benta/src/features/inventory/manage_items_page.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_page.dart';
 
 
 void main() {
   runApp(
-    ChangeNotifierProvider<InventoryModel>(
-      create: (context) => InventoryModel(),
-      child: const MyApp(),
-    ),
+      MaterialApp(
+          title: 'Benta',
+          color: Color.fromRGBO(87, 144, 8, 1),
+          themeMode: ThemeMode.light,
+          theme: ThemeData(
+              primaryColor: Color.fromRGBO(87, 144, 8, 1),
+              fontFamily: 'Inter',
+              fontFamilyFallback: ['Arial']
+          ),
+          debugShowCheckedModeBanner: true,
+          debugShowMaterialGrid: false,
+          home: Landing(),
+          initialRoute: '/',
+          routes: {
+            '/sign-up/about': (context) => SignUp1(),
+            '/sign-up/password': (context) => SignUp2(),
+            '/log-in/about': (context) => LogIn1(),
+            '/log-in/password': (context) => LogIn2(),
+            '/dashboard': (context) => Dashboard(),
+            '/dashboard/point-of-sale': (context) => PointOfSale(),
+            '/dashboard/point-of-sale/add-items': (context) => AddItems(),
+            '/dashboard/point-of-sale/checkout/1': (context) => Checkout1(),
+            '/dashboard/point-of-sale/checkout/2': (context) => Checkout2(),
+            '/dashboard/point-of-sale/checkout/receipt': (context) => Receipt(),
+            '/dashboard/inventory': (context) => InventoryPage(),
+            '/dashboard/inventory/manage-items': (context) => ManageItemsPage(),
+          }
+      )
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Benta Inventory App',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const InventoryPage(),
-        '/manage-items': (context) => const ManageItemsPage(),
-      },
-    );
-  }
 }

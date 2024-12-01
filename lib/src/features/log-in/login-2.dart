@@ -36,7 +36,7 @@ class _LogInState extends State<LogIn2> {
               children: [
                 const SizedBox(height: 20),
                 Image.asset(
-                  'assets/images/benta_logo.png',
+                  'assets/images/benta_logo_single_letter_80_x_80.png',
                   width: 80,
                   height: 80,
                 ),

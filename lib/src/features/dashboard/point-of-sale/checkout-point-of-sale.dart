@@ -4,7 +4,7 @@ import 'package:cc206_benta/src/shared-components/custom-widgets/general-top-nav
 import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
 import 'package:cc206_benta/src/shared-components/custom-widgets/pos-transaction-item-button.dart';
 
-class PointOfSale extends StatelessWidget {
+class Checkout1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,11 +13,12 @@ class PointOfSale extends StatelessWidget {
         children: [
           SingleChildScrollView(
               child: Container(
+                height: MediaQuery.sizeOf(context).height,
                 margin: EdgeInsets.only(bottom: 90),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                          GeneralTopNavLabel(label: 'Point-of-sale', iconName: 'grey-cash-register.png'),
+                          GeneralTopNavLabel(label: 'Checkout', iconName: 'grey-cash-register.png'),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Column(
@@ -42,23 +43,6 @@ class PointOfSale extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 10),
-                              Flex(direction: Axis.horizontal,
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                GeneralTextButton(
-                                    label: 'Add items',
-                                    color: Color(0xFF579008),
-                                    backgroundColor: Color(0xFFF1F1F1),
-                                    onPressed: () => Navigator.pushNamed(context, '/dashboard/point-of-sale/add-items')
-                                ),
-                                GeneralTextButton(
-                                    label: 'Scan items',
-                                    color: Color(0xFF579008),
-                                    backgroundColor: Color(0xFFF1F1F1),
-                                    onPressed: () {}
-                                ),
-                              ]),
-                              SizedBox(height: 20),
                               Text(
                                 'Transaction Date: 01/01/2024',
                                 style: TextStyle(
@@ -90,15 +74,31 @@ class PointOfSale extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20),
-                              // TODO: Height does not expand to viewport height if there are no items
-                              PosTransactionItemButton(itemName: 'Mango Yogurt Smoothie', itemImg: 'image1.png', price: 70.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){}),
-                              PosTransactionItemButton(itemName: 'Milk Cake', itemImg: 'image6.png', price: 50.00, onPressed: (){})
+                              SizedBox(height: 30),
+                              Container(
+                                width: double.infinity,
+                                child: Flex(
+                                    direction: Axis.vertical,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text('Choose a payment channel:'),
+                                      SizedBox(height: 10),
+                                      GeneralTextButton(
+                                          label: 'Cash on hand',
+                                          color: Color(0xFF579008),
+                                          backgroundColor: Color(0xFFF1F1F1),
+                                          onPressed: () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/2')
+                                      ),
+                                      SizedBox(height: 5),
+                                      GeneralTextButton(
+                                          label: 'Debit/Credit',
+                                          color: Color(0xFF579008),
+                                          backgroundColor: Color(0xFFF1F1F1),
+                                          onPressed: () {}
+                                      ),
+                                    ])
+                              )
                             ],
                             ),
                           ),
@@ -106,12 +106,10 @@ class PointOfSale extends StatelessWidget {
                   )
               )
           ),
-          GeneralBottomNavBar(navItems: 2, navLabels: [
-            "Cancel",
-            "Checkout"
+          GeneralBottomNavBar(navItems: 1, navLabels: [
+            "Back"
           ], navActions: [
-            () => Navigator.pushNamed(context, '/dashboard'),
-            () => Navigator.pushNamed(context, '/dashboard/point-of-sale/checkout/1')
+            () => Navigator.pushNamed(context, '/dashboard/point-of-sale')
           ])
         ],
       ),

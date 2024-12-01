@@ -25,7 +25,7 @@ class LoggingInAccount extends StatelessWidget {
                 width: 200,
                 height: 200,
                 child: Image.asset(
-                  'assets/images/benta_logo.png',
+                  'assets/images/benta_logo_single_letter_200_x_200.png',
                   fit: BoxFit.cover,
                 ),
               ),
