@@ -12,8 +12,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker: ^0.8.7+3  
+  shared_preferences: ^2.0.15
+  provider: ^6.0.5 
+  logger: ^1.1.0
   flutter_localizations:
     sdk: flutter
+  syncfusion_flutter_charts: ^27.2.4
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
