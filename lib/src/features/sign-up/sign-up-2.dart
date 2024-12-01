@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 import 'package:cc206_benta/src/features/sign-up/sign-up-1.dart';
 import 'package:cc206_benta/src/features/sign-up/creating-account.dart';
 
 
 class SignUp2 extends StatefulWidget{
+
   const SignUp2({ Key? key }) : super(key: key);
 
   @override
@@ -14,15 +17,37 @@ class SignUp2 extends StatefulWidget{
 
 class _SignUpState extends State<SignUp2> {
 
+  @override
+  void dispose(){
+    super.dispose();
+    _passwordController.dispose();
+  }
+
+  final _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  final _passwordController = TextEditingController();
+
 
   bool _isVisible = false;
   bool _isVisible2 = false;
 
   String? _password;
 
+  _signup(String email) async{
+    final user = await _auth.createUserWithEmailAndPassword(email, _passwordController.text);
+    if(user != null){
+      log("User Created Successfully");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final Map<String, String>? args =
+    ModalRoute.of(context)?.settings.arguments as Map<String, String>?;
+
+    final String email = args?['email'] ?? '';
+
     return Scaffold(
       backgroundColor: const Color(0xFF579008),
       body: Padding(
@@ -125,6 +150,7 @@ class _SignUpState extends State<SignUp2> {
                 const SizedBox(height: 12),
                 // TextFormField for Password Confirmation
                 TextFormField(
+                  controller: _passwordController,
                   obscureText: !_isVisible2,
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
@@ -184,6 +210,7 @@ class _SignUpState extends State<SignUp2> {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()){
+                            _signup(email);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => (CreatingAccount())),
@@ -203,7 +230,6 @@ class _SignUpState extends State<SignUp2> {
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
-            
                     ],
                   ),
                 ),
