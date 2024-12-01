@@ -55,7 +55,7 @@ class PointOfSale extends StatelessWidget {
                                     label: 'Scan items',
                                     color: Color(0xFF579008),
                                     backgroundColor: Color(0xFFF1F1F1),
-                                    onPressed: () {}
+                                    onPressed: () => Navigator.pushNamed(context, '/dashboard/point-of-sale/scan-items')
                                 ),
                               ]),
                               SizedBox(height: 20),

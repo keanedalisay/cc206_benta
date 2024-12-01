@@ -12,6 +12,7 @@ import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.d
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/checkout-point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/cash-on-hand-point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/add-items-point-of-sale.dart';
+import 'package:cc206_benta/src/features/dashboard/point-of-sale/scan-items-pos.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/receipt-point-of-sale.dart';
 import 'package:cc206_benta/src/features/inventory/manage_items_page.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
@@ -50,6 +51,7 @@ void main() async{
             '/dashboard': (context) => Dashboard(),
             '/dashboard/point-of-sale': (context) => PointOfSale(),
             '/dashboard/point-of-sale/add-items': (context) => AddItems(),
+            '/dashboard/point-of-sale/scan-items': (context) => ScanItemPage(),
             '/dashboard/point-of-sale/checkout/1': (context) => Checkout1(),
             '/dashboard/point-of-sale/checkout/2': (context) => Checkout2(),
             '/dashboard/point-of-sale/checkout/receipt': (context) => Receipt(),
