@@ -79,13 +79,13 @@ class _ScanItemPageState extends State<ScanItemPage> {
                   PosTransactionItemButton(
                     itemName: 'Ligo Sardines in Tomato Sauce',
                     itemImg: 'assets/ligo_sardines.png',
-                    price: '₱24.50',
+                    price: 24.50,
                     onPressed: () {},
                   ),
                   PosTransactionItemButton(
                     itemName: 'CDO Homestyle Corned Beef',
                     itemImg: 'assets/cdo_corned_beef.png',
-                    price: '₱35.30',
+                    price: 35.30,
                     onPressed: () {},
                   ),
                 ],
