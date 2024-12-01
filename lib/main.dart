@@ -17,6 +17,7 @@ import 'package:cc206_benta/src/features/dashboard/point-of-sale/receipt-point-o
 import 'package:cc206_benta/src/features/inventory/manage_items_page.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
 import 'package:cc206_benta/src/features/inventory/inventory_page.dart';
+import 'package:cc206_benta/src/features/dashboard/Sales.dart';
 
 
 void main() async{
@@ -43,6 +44,7 @@ void main() async{
           debugShowCheckedModeBanner: true,
           debugShowMaterialGrid: false,
           initialRoute: '/',
+          home: Landing(),
           routes: {
             '/sign-up/about': (context) => SignUp1(),
             '/sign-up/password': (context) => SignUp2(),
