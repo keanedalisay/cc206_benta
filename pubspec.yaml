@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+    flutter_barcode_scanner:^2.00
 
 dev_dependencies:
   flutter_test:
