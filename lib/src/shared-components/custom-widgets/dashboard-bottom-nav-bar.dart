@@ -52,7 +52,7 @@ class _DashboardBottomNavBarState extends State<DashboardBottomNavBar> {
               icon: Padding(
                 padding: EdgeInsets.only(top: 8, bottom: 2),
                 child: Image.asset(
-                  'assets/icons/boxes.png',
+                  'assets/icons/boxes-white.png',
                   width: 25,
                   height: 25,
                 ),
