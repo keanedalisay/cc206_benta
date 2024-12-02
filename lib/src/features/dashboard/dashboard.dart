@@ -67,6 +67,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 const SizedBox(height: 10),
+
                 ElevatedButton(
                   onPressed: () {
                     print("Settings button clicked");
