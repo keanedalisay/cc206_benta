@@ -8,6 +8,7 @@ import 'package:cc206_benta/src/features/sign-up/sign-up-2.dart';
 import 'package:cc206_benta/src/features/log-in/login-1.dart';
 import 'package:cc206_benta/src/features/log-in/login-2.dart';
 import 'package:cc206_benta/src/features/dashboard/dashboard.dart';
+import 'package:cc206_benta/src/features/dashboard/settings.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/checkout-point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/cash-on-hand-point-of-sale.dart';
@@ -50,6 +51,7 @@ void main() async{
             '/log-in/about': (context) => LogIn1(),
             '/log-in/password': (context) => LogIn2(),
             '/dashboard': (context) => Dashboard(),
+            '/dashboard/settings': (context) => Setting(),
             '/dashboard/point-of-sale': (context) => PointOfSale(),
             '/dashboard/point-of-sale/add-items': (context) => AddItems(),
             '/dashboard/point-of-sale/scan-items': (context) => ScanItemPage(),
