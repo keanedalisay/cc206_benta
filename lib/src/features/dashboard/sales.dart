@@ -1,3 +1,5 @@
+import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-bottom-nav-bar.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-top-nav-label.dart';
 import 'package:flutter/material.dart';
 
 class Sales extends StatefulWidget {
@@ -18,6 +20,7 @@ class _SalesState extends State<Sales> {
 
   final List<Map<String, String>> salesByItemCategory = [
     {'label': 'Canned Goods', 'value': '50%'},
+    {'label': 'Frozen Foods', 'value': '31%'},
     {'label': 'Dairy', 'value': '19%'},
   ];
 
@@ -47,40 +50,19 @@ class _SalesState extends State<Sales> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Container(
+          margin: EdgeInsets.only(bottom: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, right: 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(width: 24),
-                    Row(
-                      children: [
-                        const Icon(Icons.monetization_on, color: Colors.grey, size: 28),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Sales',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[700],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              GeneralTopNavLabel(label: 'Sales', iconName: 'stack-of-coins-grey.png'),
               const SizedBox(height: 20),
               // Gross Sales this year
-              Padding(
-                padding: const EdgeInsets.only(right: 80.0),
+              Container(
+                width: double.infinity,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
@@ -89,7 +71,7 @@ class _SalesState extends State<Sales> {
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: Colors.black,
+                        color: Color(0xFF579008),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -99,7 +81,7 @@ class _SalesState extends State<Sales> {
                         fontFamily: 'Inter',
                         fontSize: 40,
                         fontWeight: FontWeight.w700,
-                        color: Colors.green,
+                        color: Color(0xFF579008),
                       ),
                     ),
                   ],
@@ -107,9 +89,10 @@ class _SalesState extends State<Sales> {
               ),
               const SizedBox(height: 20),
               // Gross Sales last year
-              Padding(
-                padding: const EdgeInsets.only(left: 80.0),
+              Container(
+                width: double.infinity,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
@@ -118,7 +101,7 @@ class _SalesState extends State<Sales> {
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: Colors.black,
+                        color: Color(0xFF787878),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -131,7 +114,7 @@ class _SalesState extends State<Sales> {
                             fontFamily: 'Inter',
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
-                            color: Colors.grey[600],
+                            color: Color(0xFF787878),
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -141,7 +124,7 @@ class _SalesState extends State<Sales> {
                             fontFamily: 'Inter',
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Colors.green,
+                            color: Color(0xFF579008),
                           ),
                         ),
                       ],
@@ -181,46 +164,7 @@ class _SalesState extends State<Sales> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 100,
-        child: ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(50)),
-          child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Icon(Icons.dashboard, size: 28),
-                ),
-                label: 'Dashboard',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Icon(Icons.inventory, size: 28),
-                ),
-                label: 'Inventory',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: Icon(Icons.monetization_on, size: 28),
-                ),
-                label: 'Sales',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            backgroundColor: const Color(0xFF579008),
-            onTap: _onItemTapped,
-            iconSize: 28,
-            selectedFontSize: 14,
-            unselectedFontSize: 12,
-            type: BottomNavigationBarType.fixed,
-          ),
-        ),
-      ),
+      bottomNavigationBar: DashboardBottomNavBar()
     );
   }
 
@@ -237,7 +181,7 @@ class _SalesState extends State<Sales> {
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey, width: 1),
+        border: Border.all(color: Color(0xFFF1F1F1), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
