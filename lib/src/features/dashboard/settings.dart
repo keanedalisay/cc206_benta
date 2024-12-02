@@ -7,6 +7,9 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    User? user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -47,6 +50,36 @@ class Setting extends StatelessWidget {
             ),
 
             const SizedBox(height: 25),
+
+            Text(
+              'Email',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[600]
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            Row(
+                children: [
+                  Icon(
+                    Icons.edit,
+                    size: 20,
+                    color: Colors.green[400],
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  user != null
+                      ? Text(
+                    user.email ?? 'No email available',
+                    style: TextStyle(fontSize: 16),
+                  )
+                      : Text('No user logged in'),
+                ]
+            ),
 
 
           ],
