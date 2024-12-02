@@ -42,6 +42,7 @@ void main() async{
           ),
           debugShowCheckedModeBanner: true,
           debugShowMaterialGrid: false,
+          home: Landing(),
           initialRoute: '/',
           routes: {
             '/sign-up/about': (context) => SignUp1(),
