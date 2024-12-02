@@ -5,13 +5,15 @@ class GeneralTextButton extends StatelessWidget {
   final Color color;
   final Color backgroundColor;
   final VoidCallback onPressed;
+  final double padding;
 
   const GeneralTextButton({
     super.key,
     required this.label,
     required this.color,
     required this.backgroundColor,
-    required this.onPressed
+    required this.onPressed,
+    this.padding = 20
   });
 
   @override
@@ -19,7 +21,7 @@ class GeneralTextButton extends StatelessWidget {
     return TextButton(
         onPressed: this.onPressed,
         style: TextButton.styleFrom(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: this.padding),
             backgroundColor: Color(0xFFF1F1F1),
             minimumSize: Size(0, 40)
         ),
