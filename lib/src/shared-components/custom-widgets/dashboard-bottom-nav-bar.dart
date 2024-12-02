@@ -63,7 +63,7 @@ class _DashboardBottomNavBarState extends State<DashboardBottomNavBar> {
               icon: Padding(
                 padding: EdgeInsets.only(top: 8, bottom: 2),
                 child: Image.asset(
-                  'assets/icons/stack-of-coins.png',
+                  'assets/icons/stack-of-coins-white.png',
                   width: 25,
                   height: 25,
                 ),
