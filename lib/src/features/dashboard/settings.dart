@@ -36,6 +36,19 @@ class Setting extends StatelessWidget {
               ],
             ),
 
+            const SizedBox(height: 35),
+
+            const Text(
+              'User Account',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+
           ],
         ),
 
