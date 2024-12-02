@@ -43,6 +43,7 @@ void main() async{
           ),
           debugShowCheckedModeBanner: true,
           debugShowMaterialGrid: false,
+          home: Landing(),
           initialRoute: '/',
           home: Landing(),
           routes: {
