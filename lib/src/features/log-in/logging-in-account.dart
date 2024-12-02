@@ -15,11 +15,14 @@ class LoggingInAccount extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF579008),
-      body: Center(
-        child: Padding(
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.sizeOf(context).height,
+          alignment: Alignment.center,
           padding: const EdgeInsets.all(45.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 width: 200,

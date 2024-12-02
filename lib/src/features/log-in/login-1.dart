@@ -1,10 +1,9 @@
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cc206_benta/src/features/log-in/login-2.dart';
-import 'package:cc206_benta/src/features/sign-up/auth_service.dart';
 
-class LogIn1 extends StatefulWidget{
+class LogIn1 extends StatefulWidget {
   const LogIn1({super.key});
 
   @override
@@ -12,7 +11,6 @@ class LogIn1 extends StatefulWidget{
 }
 
 class _LoginState extends State<LogIn1> {
-
   final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -51,176 +49,164 @@ class _LoginState extends State<LogIn1> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        padding: EdgeInsets.only(left: 20, right: 20),
         color: const Color.fromRGBO(87, 144, 8, 1),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              Image.asset(
-                'assets/images/benta_logo_single_letter_80_x_80.png',
-                width: 80,
-                height: 80,
-              ),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 200, 0),
-                      child: Text(
-                        'Log-in',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 40,
-                          fontWeight: FontWeight.w700,
-                          height: 48.41 / 40,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 200, 0),
-                      child: Text(
-                        'Step 1',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          height: 29.05 / 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 30),
-              Form(
-                  key: _formKey,
-                  child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "What is your business's\naccount ID?",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          height: 19.36 / 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        width: 350,
-                        height: 88,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none,
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        "What is your email?",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          height: 19.36 / 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        width: 350,
-                        height: 88,
-                        child: TextFormField(
-                          controller: _email,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none,
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 20,
-                            ),
-                          ),
-                          validator: (value){
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
-                            } else if (!EmailValidator.validate(value)) {
-                              return 'Please enter a valid email address';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
+          child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 40),
+                  Image.asset(
+                    'assets/images/benta_logo_single_letter_80_x_80.png',
+                    width: 80,
+                    height: 80,
                   ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 75, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ElevatedButton(
-                      onPressed:  _onNextPressed,
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(120, 55),
-                        backgroundColor: Colors.white, 
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: 350,
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: Text(
+                            'Log-in',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 40,
+                              fontWeight: FontWeight.w700,
+                              height: 48.41 / 40,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 10,
+                        SizedBox(height: 10),
+                        Container(
+                          child: Text(
+                            'Step 1',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              height: 29.05 / 24,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          height: 19.36 / 16,
-                          color: Colors.black, 
-                        ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 30),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "What is your business's\naccount ID?",
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            height: 19.36 / 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          width: 350,
+                          height: 80,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "What is your email?",
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            height: 19.36 / 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          width: 350,
+                          height: 88,
+                          child: TextFormField(
+                            controller: _email,
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 20,
+                              ),
+                            ),
+                            validator: (value){
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your email';
+                              } else if (!EmailValidator.validate(value)) {
+                                return 'Please enter a valid email address';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 350,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        GeneralTextButton(
+                            label: 'Cancel',
+                            color: Color(0xFFFFFFFF),
+                            backgroundColor: Color(0xFF579008),
+                            onPressed: () => Navigator.pop(context),
+                          padding: 20
+                        ),
+                        GeneralTextButton(
+                            label: 'Next',
+                            color: Color(0xFF212121),
+                            backgroundColor: Color(0xFFFFFFFF),
+                            onPressed: _onNextPressed,
+                            padding: 30
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                ],
               ),
-            ],
           ),
-        ),
       ),
     );
   }
