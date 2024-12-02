@@ -35,7 +35,7 @@ class _DashboardState extends State<Dashboard> {
                   width: double.infinity,
                   height: 40,
                   margin: EdgeInsets.only(top: 0, left: 0),
-                  child: Opacity(
+                  child: const Opacity(
                     opacity: 1, // Hidden
                     child: Text(
                       'Karen Daliva',
@@ -49,7 +49,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   'I Love Milktea',
                   style: TextStyle(
                     fontSize: 16,
@@ -58,7 +58,7 @@ class _DashboardState extends State<Dashboard> {
                     fontFamily: 'Inter',
                   ),
                 ),
-                Text(
+                const Text(
                   'ILM-0A1F-9231',
                   style: TextStyle(
                     fontSize: 12,
@@ -67,38 +67,43 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () {
+                ElevatedButton(
+                  onPressed: () {
                     print("Settings button clicked");
+                    Navigator.pushNamed(
+                        context,
+                        '/dashboard/settings');
                   },
-                  child: Container(
+                  style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                    backgroundColor: Colors.grey[200],
+                    foregroundColor: Colors.grey[600], // Color for text/icon
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.grey[600],
-                          size: 20,
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          'Settings',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.grey[600],
-                            fontFamily: 'Inter',
-                          ),
-                        ),
-                      ],
-                    ),
+                    elevation: 0, // To remove elevation if desired
                   ),
-                ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.settings,
+                        size: 20,
+                      ),
+                      SizedBox(width: 6),
+                      Text(
+                        'Settings',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+
+
               ],
             ),
           ),
