@@ -147,7 +147,81 @@ class Setting extends StatelessWidget {
                 ]
             ),
 
+            const SizedBox(height: 45),
 
+            const Text(
+              'Business',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            Text(
+              'Business Account ID',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[600]
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            Row(
+                children: [
+                  Icon(
+                    Icons.perm_identity,
+                    size: 20,
+                    color: Colors.green[400],
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  Text(
+                    'ILM-0A1F-9231',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600]
+                    ),
+                  ),
+                ]
+            ),
+
+            const SizedBox(height: 25),
+
+            Text(
+              'Business Name',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[600]
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            Row(
+                children: [
+                  Icon(
+                    Icons.perm_identity,
+                    size: 20,
+                    color: Colors.green[400],
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  Text(
+                    'I Love Milktea',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600]
+                    ),
+                  ),
+                ]
+            ),
           ],
         ),
 
