@@ -213,7 +213,7 @@ class Setting extends StatelessWidget {
           navItems: 2,
           navLabels: ['Back', 'Save'],
           navActions: [
-                () => Navigator.pushNamed(context, '/dashboard'),
+                () => Navigator.pop(context),
                 (){}
           ]
       ),
