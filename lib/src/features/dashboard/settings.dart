@@ -1,3 +1,4 @@
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-top-nav-label.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cc206_benta/src/shared-components/custom-widgets/general-bottom-nav-bar.dart';
@@ -13,33 +14,14 @@ class Setting extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(36.0),
+        padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Icon(
-                  Icons.settings,
-                  size: 40,
-                  color: Colors.grey[600],
-                ),
-
-                const SizedBox(width: 8),
-
-                Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Inter',
-                    color: Colors.grey[600],
-                  ),
-                ),
-              ],
+            GeneralTopNavLabel(
+                label: 'Settings',
+                iconName: 'settings.png'
             ),
-
-            const SizedBox(height: 35),
+            const SizedBox(height: 20),
 
             const Text(
               'User Account',
@@ -49,7 +31,7 @@ class Setting extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 10),
 
             Text(
               'Email',
@@ -157,7 +139,7 @@ class Setting extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 10),
 
             Text(
               'Business Account ID',
@@ -222,6 +204,7 @@ class Setting extends StatelessWidget {
                   ),
                 ]
             ),
+            const SizedBox(height: 30),
           ],
         ),
 
