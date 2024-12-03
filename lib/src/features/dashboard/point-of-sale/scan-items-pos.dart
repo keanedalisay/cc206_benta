@@ -77,14 +77,14 @@ class _ScanItemPageState extends State<ScanItemPage> {
                   ),
                   const SizedBox(height: 20),
                   PosTransactionItemButton(
-                    itemName: 'Ligo Sardines in Tomato Sauce',
-                    itemImg: 'assets/ligo_sardines.png',
+                    itemName: 'Ligo Sardines',
+                    itemImg: 'ligo_sardines.png.png',
                     price: 24.50,
                     onPressed: () {},
                   ),
                   PosTransactionItemButton(
-                    itemName: 'CDO Homestyle Corned Beef',
-                    itemImg: 'assets/cdo_corned_beef.png',
+                    itemName: 'CDO Corned Beef',
+                    itemImg: 'cdo_corned_beef.png.png',
                     price: 35.30,
                     onPressed: () {},
                   ),
