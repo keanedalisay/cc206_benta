@@ -1,3 +1,6 @@
+import 'package:cc206_benta/src/shared-components/custom-widgets/dashboard-bottom-nav-bar.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-top-nav-label.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'manage_items_page.dart';
@@ -42,7 +45,7 @@ class _InventoryPageState extends State<InventoryPage> {
         setState(() {
           _chartData = categoryValues.entries.map((entry) => ChartData(entry.key, entry.value)).toList();
         if (_chartData.isEmpty) {
-            _chartData = [ChartData("No Inventory yet", 100)];
+            _chartData = [ChartData("Empty", 0)];
           }
         });
       }
@@ -72,173 +75,134 @@ class _InventoryPageState extends State<InventoryPage> {
 
 
         return Scaffold(
-          appBar: AppBar(
-            title: LayoutBuilder(
-              builder: (context, constraints) {
-                double fontSizee = constraints.maxWidth > 400 ? 30 : 20;
-                double iconSize = constraints.maxWidth * 0.11; 
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Image.asset(
-                        'assets/icons/boxes-gray.png', 
-                      height: iconSize,
-                      width: iconSize, 
-                      fit: BoxFit.contain, 
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        "Inventory",
+          backgroundColor: Colors.white,
+          body: Container(
+              height: MediaQuery.sizeOf(context).height,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GeneralTopNavLabel(label: 'Inventory', iconName: 'boxes-gray.png'),
+                    SizedBox(height: 20),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Total Inventory Value",
                         style: TextStyle(
-                          fontSize: fontSizee,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 78, 78, 78),
+                          color: const Color(0xFF579008),
                         ),
                       ),
-                    ],
-                  );
-              },
-            ),
-          ),
-          body: LayoutBuilder( 
-            builder: (context, constraints) {
-              return Column(
-                children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-                        
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Align( 
-                              alignment: const Alignment(-0.7, 0.0),
-                              child: Text(
-                                "Total Inventory Value",
-                                style: TextStyle(
-                                  fontSize: constraints.maxWidth > 400 ? 30 : 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color(0xFF579008),
-                                ),
-                              ),
-                            ),
-                            
-                            Align(
-                              alignment: const Alignment(-0.6, 0.0),
-                              child: AutoSizeText(
-                                "₱ ${totalValue.toStringAsFixed(2)}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF579008),
-                                ),
-                                maxLines: 1,
-                                minFontSize: constraints.minWidth > 400 ? 20 : 50, 
-                                maxFontSize: constraints.maxWidth > 400 ? 50 : 50, 
-                              ),
-                            ),
-
-                            const SizedBox(height: 20),
-
-                                  // Pie Chart
-                                  SizedBox(
-                                    height: constraints.maxWidth > 400 ? 400 : 250, 
-                                    child: SfCircularChart(
-                                      title:
-                                          ChartTitle(text: 'Percentage of Inventory',                    
-                                            textStyle: TextStyle (
-                                              fontSize: constraints.maxWidth > 400 ? 20 : 30, 
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color.fromARGB(255, 0, 0, 0),
-                                            ),
-                                          ),
-
-                                      legend:  Legend(
-                                          isVisible: true,
-                                          position: LegendPosition.bottom,
-                                          textStyle: TextStyle(
-                                            fontSize: constraints.maxWidth > 400 ? 20 : 30,
-                                          )
-                                          ),
-
-                                      series: <CircularSeries>[
-                                        PieSeries<ChartData, String>(
-                                          
-                                            dataSource: chartData,
-                                            xValueMapper: (ChartData data, _) => data.x,
-                                            yValueMapper: (ChartData data, _) => data.y,
-                                            dataLabelSettings:
-                                                DataLabelSettings(
-                                                  isVisible: true,
-                                                  textStyle: TextStyle(
-                                                    fontSize: constraints.maxWidth > 400 ? 20 : 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                                  )
-                                                )
-                                        )
-                                      ],
-                                    ),
-                                  ),
-
-                                  // Low Inventory Section (Conditional)
-                                  if (lowInventoryItems.isNotEmpty) ...[
-                                    const SizedBox(height: 20),
-                                    RichText(
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: "${lowInventoryItems.length} items ",
-                                            style: TextStyle(
-                                              color: Colors.red, 
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: constraints.maxWidth > 400 ? 20 : 16),
-                                          ),
-                                          TextSpan(
-                                            text: "have low inventory levels",
-                                            style: TextStyle(
-                                              color: Colors.grey, 
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: constraints.maxWidth > 400 ? 20 : 16),
-                                          ),
-                                        ],
-                                       ),
-                                      ),
-                                   ],
-                        ],
-                      ), 
                     ),
-                  ),
-
-                  // Manage Items Button (Always at the bottom)
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: SizedBox(
-                      width: constraints.maxWidth > 600 ? 300 : double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ManageItemsPage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Manage items",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: constraints.maxWidth > 400 ? 20 : 16,),
-                          ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: AutoSizeText(
+                        "₱ ${totalValue.toStringAsFixed(2)}",
+                        style: const TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF579008),
                         ),
+                        maxLines: 1,
                       ),
-                    ),  
-                ],
-              );
-            },
+                    ),
+
+                    const SizedBox(height: 20),
+                    // Pie Chart
+                    SizedBox(
+                      height: 400,
+                      child: SfCircularChart(
+                        palette: [
+                          Color(0x11579008),
+                          Color(0x22579008),
+                          Color(0x33579008),
+                          Color(0x44579008),
+                        ],
+                        title:
+                            ChartTitle(text: 'Percentage of Inventory',
+                              textStyle: TextStyle (
+                                fontSize:  16,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF787878),
+                              ),
+                            ),
+
+                        legend:  Legend(
+                            isVisible: true,
+                            position: LegendPosition.bottom,
+                            textStyle: TextStyle(
+                              color: Color(0xFF212121),
+                              fontSize: 16,
+                            )
+                        ),
+
+                        series: <CircularSeries>[
+                          PieSeries<ChartData, String>(
+
+                              dataSource: _chartData,
+                              xValueMapper: (ChartData data, _) => data.x,
+                              yValueMapper: (ChartData data, _) => data.y,
+                              dataLabelSettings:
+                                  DataLabelSettings(
+                                    isVisible: true,
+                                    textStyle: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF212121),
+                                    )
+                                  ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    // Low Inventory Section (Conditional)
+                    if (lowInventoryItems.isNotEmpty) ...[
+                      const SizedBox(height: 20),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "${lowInventoryItems.length} items ",
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16)
+                            ),
+                            TextSpan(
+                              text: "have low inventory levels",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16
+                              )
+                            ),
+                          ],
+                         ),
+                        ),
+                     ],
+                    SizedBox(height: 30),
+                    GeneralTextButton(
+                        label: 'Manage Items',
+                        color: Color(0xFF579008),
+                        backgroundColor: Color(0xFFF1F1F1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ManageItemsPage(),
+                            ),
+                          );
+                        },
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
+            )
           ),
+          bottomNavigationBar: DashboardBottomNavBar()
         );
       },
     );
