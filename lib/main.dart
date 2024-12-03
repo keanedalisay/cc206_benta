@@ -46,7 +46,6 @@ void main() async{
           debugShowMaterialGrid: false,
           home: Landing(),
           initialRoute: '/',
-          home: Landing(),
           routes: {
             '/sign-up/about': (context) => SignUp1(),
             '/sign-up/password': (context) => SignUp2(),
