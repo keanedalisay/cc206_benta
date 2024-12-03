@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-bottom-nav-bar.dart';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -41,49 +43,62 @@ class ManageItemsPageState extends State<ManageItemsPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            // Expanded( // First Column - Image
-            //   child: Align(
-            //     alignment: Alignment.centerLeft,
-            //     child: Image.asset(
-            //       'assets/icons/boxes-gray.png',
-            //       fit: BoxFit.contain,
-            //     ),
-            //   ),
-            // ),
-            const Expanded( 
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Inventory Items'),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Row(
+            children: [
+              SizedBox(width: 20),
+              const Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Inventory Items',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF212121)
+                    )
+                  ),
+                ),
               ),
-            ),
-            Expanded( // Icon Button
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  icon: _isDeleteMode
-                      ? const Icon(Icons.check_circle)
-                      : const Icon(Icons.delete_outline),
-                  onPressed: () {
-                    setState(() {
-                      _isDeleteMode = !_isDeleteMode;
-                      if (!_isDeleteMode) {
-                        _selectedItems = [];
-                      }
-                    });
-                  },
+              Expanded( // Icon Button
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    icon: _isDeleteMode
+                        ? const Icon(Icons.check_circle)
+                        : const Icon(Icons.delete_outline),
+                    onPressed: () {
+                      setState(() {
+                        _isDeleteMode = !_isDeleteMode;
+                        if (!_isDeleteMode) {
+                          _selectedItems = [];
+                        }
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          //Delete Button
+          if (_isDeleteMode)
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              color: Color(0xFFC70000),
+              child: GestureDetector(
+                onTap: _deleteSelectedItems,
+                child: const Text("Delete Selected",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFFFFFFFF),
+                    )
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-      
-      body: Column(
-        children: <Widget>[
           _buildSortDropdown(inventoryModel), // Sort dropdown
           Expanded(
             child: ListView.builder(
@@ -111,14 +126,14 @@ class ManageItemsPageState extends State<ManageItemsPage> {
                       );
                     }
                   },
-                  
-                  child: IntrinsicHeight( 
+
+                  child: IntrinsicHeight(
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch, 
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
                           child: Card(
-                            color: isSelected ? Colors.grey[300] : null,
+                            color: isSelected ? Color(0xFFC70000) : Color(0xFFF1F1F1),
                             margin: const EdgeInsets.only(left: 10, top: 10,),
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
@@ -133,13 +148,17 @@ class ManageItemsPageState extends State<ManageItemsPage> {
                                 children: [
                                   Text(
                                     "${item.weight} • ${item.brand}",
+                                    style: TextStyle(
+                                      color: isSelected ? Color(0xFFFFFFFF) : Color(0xFF212121),
+                                    )
                                   ),
                                   Text(item.name,
-                                    style: const TextStyle(
+                                    style: TextStyle(
+                                      color: isSelected ? Color(0xFFFFFFFF) : Color(0xFF212121),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
-                                    ),                                  
-                                  ), 
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -173,81 +192,20 @@ class ManageItemsPageState extends State<ManageItemsPage> {
               },
             ),
           ),
-
-          //Delete Button
-        if (_isDeleteMode)
-          Positioned(
-            child: SizedBox(
-              width: 150, 
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
-                ),
-                onPressed: _deleteSelectedItems,
-                child: const Text("Delete Selected"),
-              ),
-            ),
+          GeneralTextButton(
+              label: 'Add Item',
+              color: Color(0xFF579008),
+              backgroundColor: Color(0xFFF1F1F1),
+              onPressed: () => _showAddItemDialog(context)
           ),
-          
-          // Add Item Button
-           Padding(
-                padding: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
-                child: SizedBox(
-                  height: 50, 
-                  width: 200,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFF1F1F1),
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF579008),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () {
-                      _showAddItemDialog(context);
-                    },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add, size: 18, color: Color(0xFF579008)),
-                        SizedBox(width: 8),
-                        Text("Add item"),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
+            SizedBox(height: 30),
             // Back Button
-          Padding(
-      padding: const EdgeInsets.only(),
-      child: SizedBox(
-        width: double.infinity,
-        height: 50,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF579008),
-            textStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-            shape: const RoundedRectangleBorder(
-              
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-            ),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text("Back"),
-        ),
-      ),
-    )
-
+          GeneralBottomNavBar(
+              navItems: 1,
+              navLabels: ['Back'],
+              navActions: [
+                () => Navigator.pop(context)
+              ])
         ],
       ),
     );
@@ -290,14 +248,29 @@ class ManageItemsPageState extends State<ManageItemsPage> {
               context: context,
                 builder: (context) {
                     return AlertDialog(
-                      title: const Text('Delete Items?'),
+                      backgroundColor: Colors.white,
+                      title: const Text('Delete Items?',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700
+                          )
+                      ),
                       content: Text('Are you sure you want to delete ${_selectedItems.length} items?'),
                       actions: [
                         TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Color(0xFF579008),
+                            backgroundColor: Color(0xFFF1F1F1),
+                          ),
                           onPressed: () => Navigator.pop(context),
                           child: const Text('Cancel'),
                         ),
                         TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Color(0xFF579008),
+                            backgroundColor: Color(0xFFF1F1F1),
+                          ),
                           onPressed: () {
                             Provider.of<InventoryModel>(context, listen: false)
                                 .deleteItems(_selectedItems);
@@ -334,7 +307,14 @@ class ManageItemsPageState extends State<ManageItemsPage> {
       builder: (BuildContext dialogContext) {
         return StatefulBuilder(
           builder: (context, setState) => AlertDialog(
-            title: const Text('Add Item'),
+            backgroundColor: Colors.white,
+            title: const Text('Add Item',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                    fontWeight: FontWeight.w700
+                )
+            ),
             scrollable: true,
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -401,12 +381,20 @@ class ManageItemsPageState extends State<ManageItemsPage> {
             ),
             actions: <Widget>[
               TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Color(0xFF579008),
+                  backgroundColor: Color(0xFFF1F1F1),
+                ),
                 onPressed: () async  {
                   Navigator.of(dialogContext).pop();
                 },
                 child: const Text('Cancel'),
               ),
               TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Color(0xFF579008),
+                  backgroundColor: Color(0xFFF1F1F1),
+                ),
                  onPressed: () async {
                             final itemName = _itemNameController.text;
                             final brand = _itemBrandController.text;

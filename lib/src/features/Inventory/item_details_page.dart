@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cc206_benta/src/shared-components/custom-widgets/general-text-button.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -58,22 +59,38 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
     final double totalItemValue = widget.item.quantity * widget.item.price;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.item.name),
-        automaticallyImplyLeading: false, 
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () => _showEditItemDialog(context), 
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                children: [
+                  const Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Inventory Item',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF212121)
+                          )
+                      ),
+                    ),
+                  ),
+                  Expanded( // Icon Button
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () => _showEditItemDialog(context)
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               GestureDetector(
                 onTap: () async {
                   final XFile? image =
@@ -104,6 +121,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
                 children: [
                   Text(widget.item.name,
                       style: const TextStyle(
+                        color: Color(0xFF787878),
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       )),
@@ -111,7 +129,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
                   Text(widget.item.brand,
                       style: const TextStyle(
                         fontSize: 18,
-                        color: Colors.black54,
+                        color: Color(0xFF787878),
                       )),
                 ],
               ),
@@ -119,50 +137,35 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
               const SizedBox(height: 20),
               const Text("Total Item Value",
                   style: TextStyle(
+                    color: Color(0xFF579008),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   )),
-              const SizedBox(height: 10),
               Text("₱ ${totalItemValue.toStringAsFixed(2)}",
                   style: const TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
                     color:  Color(0xFF579008),
                   )),
-
               const SizedBox(height: 20),
-
               _buildDetailRow("Value per Item", "₱ ${widget.item.price.toStringAsFixed(2)}"), 
               _buildDetailRow("VAT per Item", "₱ ${widget.item.vat.toStringAsFixed(2)}"), 
               _buildDetailRow("Items in stock", "${widget.item.quantity}"),
               _buildDetailRow("Item Weight", widget.item.weight), 
               _buildDetailRow("Item Category", widget.item.category), 
-              _buildDetailRow("Minimum Stock", "${widget.item.minStock}"),  
-
+              _buildDetailRow("Minimum Stock", "${widget.item.minStock}"),
               const SizedBox(height: 40),
-
-
-              const SizedBox(height: 20),
-
-
-              SizedBox(
+              Container(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF579008),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    textStyle: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Back"),
-                ),
+                  alignment: Alignment.center,
+                  child: GeneralTextButton(
+                  label: 'Back',
+                  color: Color(0xFF579008),
+                  backgroundColor: Color(0xFFF1F1F1),
+                  onPressed: () => Navigator.pop(context)
+                )
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -191,7 +194,14 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: const Text('Edit Item'),
+          backgroundColor: Colors.white,
+          title: const Text('Edit Item',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700
+              )
+          ),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -240,12 +250,20 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
           ),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xFF579008),
+                backgroundColor: Color(0xFFF1F1F1),
+              ),
               child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
               },
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xFF579008),
+                backgroundColor: Color(0xFFF1F1F1),
+              ),
               child: const Text('Save'),
               onPressed: () {
 
