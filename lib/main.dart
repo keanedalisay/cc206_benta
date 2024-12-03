@@ -15,9 +15,9 @@ import 'package:cc206_benta/src/features/dashboard/point-of-sale/cash-on-hand-po
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/add-items-point-of-sale.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/scan-items-pos.dart';
 import 'package:cc206_benta/src/features/dashboard/point-of-sale/receipt-point-of-sale.dart';
-import 'package:cc206_benta/src/features/inventory/manage_items_page.dart';
-import 'package:cc206_benta/src/features/inventory/inventory_models.dart';
-import 'package:cc206_benta/src/features/inventory/inventory_page.dart';
+import 'package:cc206_benta/src/features/dashboard/inventory/manage_items_page.dart';
+import 'package:cc206_benta/src/features/dashboard/inventory/inventory_models.dart';
+import 'package:cc206_benta/src/features/dashboard/inventory/inventory_page.dart';
 import 'package:cc206_benta/src/features/dashboard/Sales.dart';
 
 
@@ -32,37 +32,39 @@ void main() async{
       projectId: 'benta-681ba')
   );
 
-  runApp(
-      MaterialApp(
-          title: 'Benta',
-          color: Color.fromRGBO(87, 144, 8, 1),
-          themeMode: ThemeMode.light,
-          theme: ThemeData(
-              primaryColor: Color.fromRGBO(87, 144, 8, 1),
-              fontFamily: 'Inter',
-              fontFamilyFallback: ['Arial']
-          ),
-          debugShowCheckedModeBanner: true,
-          debugShowMaterialGrid: false,
-          home: Landing(),
-          initialRoute: '/',
-          routes: {
-            '/sign-up/about': (context) => SignUp1(),
-            '/sign-up/password': (context) => SignUp2(),
-            '/log-in/about': (context) => LogIn1(),
-            '/log-in/password': (context) => LogIn2(),
-            '/dashboard': (context) => Dashboard(),
-            '/dashboard/settings': (context) => Setting(),
-            '/dashboard/point-of-sale': (context) => PointOfSale(),
-            '/dashboard/point-of-sale/add-items': (context) => AddItems(),
-            '/dashboard/point-of-sale/scan-items': (context) => ScanItemPage(),
-            '/dashboard/point-of-sale/checkout/1': (context) => Checkout1(),
-            '/dashboard/point-of-sale/checkout/2': (context) => Checkout2(),
-            '/dashboard/point-of-sale/checkout/receipt': (context) => Receipt(),
-            '/dashboard/inventory': (context) => InventoryPage(),
-            '/dashboard/inventory/manage-items': (context) => ManageItemsPage(),
-            '/dashboard/sales': (context) => Sales()
-          }
-      )
+  runApp(ChangeNotifierProvider<InventoryModel>(
+    create: (context) => InventoryModel(),
+    child: MaterialApp(
+        title: 'Benta',
+        color: Color.fromRGBO(87, 144, 8, 1),
+        themeMode: ThemeMode.light,
+        theme: ThemeData(
+            primaryColor: Color.fromRGBO(87, 144, 8, 1),
+            fontFamily: 'Inter',
+            fontFamilyFallback: ['Arial']
+        ),
+        debugShowCheckedModeBanner: true,
+        debugShowMaterialGrid: false,
+        home: Landing(),
+        initialRoute: '/',
+        routes: {
+          '/sign-up/about': (context) => SignUp1(),
+          '/sign-up/password': (context) => SignUp2(),
+          '/log-in/about': (context) => LogIn1(),
+          '/log-in/password': (context) => LogIn2(),
+          '/dashboard': (context) => Dashboard(),
+          '/dashboard/settings': (context) => Setting(),
+          '/dashboard/point-of-sale': (context) => PointOfSale(),
+          '/dashboard/point-of-sale/add-items': (context) => AddItems(),
+          '/dashboard/point-of-sale/scan-items': (context) => ScanItemPage(),
+          '/dashboard/point-of-sale/checkout/1': (context) => Checkout1(),
+          '/dashboard/point-of-sale/checkout/2': (context) => Checkout2(),
+          '/dashboard/point-of-sale/checkout/receipt': (context) => Receipt(),
+          '/dashboard/inventory': (context) => InventoryPage(),
+          '/dashboard/inventory/manage-items': (context) => ManageItemsPage(),
+          '/dashboard/sales': (context) => Sales()
+        }
+    )
+  )
   );
 }
