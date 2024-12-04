@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
+  flutter_launcher_icons: ^0.14.1
   image_picker: ^0.8.7+3  
   shared_preferences: ^2.0.15
   provider: ^6.0.5 
@@ -24,6 +25,16 @@ dependencies:
   firebase_auth: ^4.17.7
   syncfusion_flutter_charts: ^27.2.4
   auto_size_text: ^3.0.0
+
+flutter_launcher_icons:
+  image_path: assets/images/benta_logo_single_letter_80_x_80.png
+  android: true
+  ios: true
+  web:
+    generate: true
+    image_path: assets/images/benta_logo_single_letter_80_x_80.png
+    background_color: "#579008"
+    theme_color: "#579008"
 
 dev_dependencies:
   flutter_test:
